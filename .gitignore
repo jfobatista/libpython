@@ -128,11 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#Pycharm config files
+#Pycharm files
 .idea/
 .classpath
 .project
 .settings/
 bin/
 *.sqlite3
-*.sql
