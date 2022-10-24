@@ -8,6 +8,7 @@ Link para o repositório [LibPython](https://github.com/jfobatista/libpython)
 Suportada versão 3 de Python
 
 Para instalar:
+
 ``console
 python -m venv venv
 .\venv\Scripts\activate
