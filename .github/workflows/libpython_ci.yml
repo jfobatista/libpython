@@ -1,4 +1,4 @@
-name: libpythonpro-CI
+name: libpython-CI
 
 on: [push]
 
