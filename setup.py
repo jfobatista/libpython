@@ -95,7 +95,7 @@ def find_package_data(
 
 
 PACKAGE = "libpython"
-NAME = PACKAGE
+NAME = 'libpython-jfobatista'
 DESCRIPTION = "Módulo de construção de projetos Python"
 AUTHOR = "João Francisco de Oliveira Batista"
 AUTHOR_EMAIL = "jonesjoao_@hotmail.com"
