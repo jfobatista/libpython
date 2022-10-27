@@ -15,6 +15,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements-dev.txt
+        pip install pipenv
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names 
@@ -22,5 +23,5 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide 
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Tests with pytest
-        run: pipenv run pytest libpython --cov=libpython
+        run: pipenv run pytest libpython
 
