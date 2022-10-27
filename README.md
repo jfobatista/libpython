@@ -4,6 +4,7 @@ Construção de projetos em Python
 Este é o README.
 
 Link para o repositório [LibPython](https://github.com/jfobatista/libpython)
+[![codecov](https://codecov.io/gh/jfobatista/libpython/branch/main/graph/badge.svg?token=9AN5QR9GU3)](https://codecov.io/gh/jfobatista/libpython)
 
 Suportada versão 3 de Python
 
