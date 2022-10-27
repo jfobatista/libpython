@@ -15,4 +15,3 @@ def test_remetente():
         'Python',  # assunto
         'Linguagem Python, OO'  # corpo do email
     )
-    assert remetente in resultado
