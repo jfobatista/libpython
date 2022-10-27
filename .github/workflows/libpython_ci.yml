@@ -14,14 +14,14 @@ jobs:
         python-version: 3.8
     - name: Instalar dependências
       run: |
-        pip install pipenv codecov
+        pip install pipenv pytest codecov
         pipenv sync --dev
     - name: Lint with flake8
       run: |
         pipenv run flake8 .
 
     - name: Test with pytest
-        run: pytest libpython --cov=.
+        run: pytest libpython --cov
 
     - name: Posting Coverage
         run: pipenv run codecov
