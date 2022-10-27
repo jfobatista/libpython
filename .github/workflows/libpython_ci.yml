@@ -14,6 +14,7 @@ jobs:
     - name: Instalar dependências
       run: |
         pip install pipenv codecov
+        pipenv lock
         pipenv sync --dev
     - name: Lint with flake8
       run: |
