@@ -25,7 +25,7 @@ def test_remetente(destinatario):
 
 @pytest.mark.parametrize(
     'remetente',
-    ['jonesjoao', '']
+    ['jonesjoao@gmail.com']
 )
 def test_remetente_invalido(remetente):  # validar o email do remetente
     enviador = Enviador()
