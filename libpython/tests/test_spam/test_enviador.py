@@ -29,7 +29,7 @@ def test_remetente(destinatario):
 )
 def test_remetente_invalido(remetente):  # validar o email do remetente
     enviador = Enviador()
-    with pytest.raises(EmailInvalido): #gerenciador de contexto, lança exceção de email invalido
+    with pytest.raises(EmailInvalido):  # gerenciador de contexto, lança exceção de email invalido
         resultado = enviador.enviar(
             remetente,  # destinatário
             'jonesjoao_@hotmail.com',  # remetente
