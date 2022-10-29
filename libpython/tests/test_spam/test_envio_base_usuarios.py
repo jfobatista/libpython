@@ -1,20 +1,10 @@
+from unittest.mock import Mock
+
 import pytest
 
 from libpython.spam.enviador import Enviador
 from libpython.spam.main import EnviadorDeSpam
 from libpython.spam.modelos import Usuario
-
-
-class EnviadorMock(Enviador):
-
-    def __init__(self):
-        super().__init__()
-        self.qtde_emails_enviados = 0
-        self.parametros_de_envio = None
-
-    def enviar(self, remetente, destinatario, assunto, corpo):
-        self.parametros_de_envio = (remetente, destinatario, assunto, corpo)
-        self.qtde_emails_enviados += 1
 
 
 @pytest.mark.parametrize(
@@ -34,7 +24,7 @@ def test_qtde_de_spam(sessao,
     # o método enviador foi chamado e quantos usuários foram salvos na sessão
     for usuario in usuarios:
         sessao.salvar(usuario)
-    enviador = EnviadorMock()
+    enviador = Mock()
     enviador_de_spam = EnviadorDeSpam(sessao, enviador)
     # busca os usuarios do banco de dados pela sessao e envia os emails pelo enviador
     enviador_de_spam.enviar_emails(
@@ -42,8 +32,7 @@ def test_qtde_de_spam(sessao,
         'Jogo',
         'Ruim'
     )
-    assert len(usuarios) == enviador.qtde_emails_enviados
-
+    assert len(usuarios) == enviador.enviar.call_count # mostra quantas vezes o método foi chamado
 
 
 def test_parametros_de_spam(sessao):
@@ -51,7 +40,7 @@ def test_parametros_de_spam(sessao):
     # testar quantos spam foram enviados, dessa forma, entender quantas vezes
     # o método enviador foi chamado e quantos usuários foram salvos na sessão
     sessao.salvar(usuario)
-    enviador = EnviadorMock()
+    enviador = Mock()
     # Injeção de dependencia - para que enviadordespam funcione, ele depende de sessao e enviador
     # podemos trocar o enviador por outro
     enviador_de_spam = EnviadorDeSpam(sessao, enviador)
@@ -61,7 +50,8 @@ def test_parametros_de_spam(sessao):
         'Jogo',
         'Ruim'
     )
-    assert enviador.parametros_de_envio == (
+    # certifica se o método enviar foi chamado uma única vez com os parâmetros passados
+    enviador.enviar.assert_called_once_with(
         'gabi@hotmail.com',
         'jonesjoao@gmail.com',
         'Jogo',
