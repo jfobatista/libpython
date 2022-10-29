@@ -4,7 +4,7 @@ class Enviador:
             raise EmailInvalido(f'Email de remetente inválido: {remetente}')
         if not remetente:
             raise EmailInvalido('Email de remetente vazio.')
-        return 'jonesjoao@gmail.com'
+        return remetente
 
 
 class EmailInvalido(Exception):
